@@ -1,9 +1,0 @@
-my_env/
-__pycache__/
-archive/
-archive.zip
-*.pt
-.ipynb_checkpoints/
-
-
-
