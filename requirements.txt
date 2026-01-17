@@ -1,0 +1,14 @@
+# Requirements for Intelligent Urban Traffic Optimization project
+# Note: For GPU support with PyTorch, install the appropriate CUDA-enabled build
+# from https://pytorch.org/get-started/locally/ (the `torch` package here may pull
+# a CPU-only wheel if no CUDA wheel is selected).
+ultralytics
+torch
+tensorflow
+opencv-python
+numpy
+pandas
+scikit-learn
+gym
+matplotlib
+jupyter
