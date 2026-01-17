@@ -16,12 +16,14 @@ class TrafficEnv(gym.Env):
         self.state = None
 
     def reset(self):
-        self.state = np.array([
-            np.random.randint(5, 50),   # vehicle_count
-            np.random.randint(0, 20),   # pedestrian_count
-            np.random.randint(0, 3),    # congestion_level
-            np.random.randint(0, 2)     # anomaly_flag
-        ])
+        self.state = np.array(
+            [
+                np.random.randint(5, 50),  # vehicle_count
+                np.random.randint(0, 20),  # pedestrian_count
+                np.random.randint(0, 3),  # congestion_level
+                np.random.randint(0, 2),  # anomaly_flag
+            ]
+        )
         return self.state
 
     def step(self, action):
@@ -44,9 +46,3 @@ class TrafficEnv(gym.Env):
 
         self.state = np.array([vehicle, ped, congestion, anomaly])
         return self.state, reward, done, {}
-
-
-
-
-
-
