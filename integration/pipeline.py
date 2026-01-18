@@ -25,6 +25,7 @@ class PipelineOptions:
     enable_vae: bool = True
     enable_gan: bool = False  # Off by default as it modifies data
     enable_rl: bool = True
+    enable_nlp: bool = False  # Off by default, requires social media data
     
     # VAE training options (only if VAE model not pre-trained)
     vae_epochs: int = 50
@@ -68,6 +69,7 @@ class TrafficOptimizationPipeline:
         self._vae_wrapper = None
         self._gan_wrapper = None
         self._rl_wrapper = None
+        self._nlp_wrapper = None
         
         # Data pipeline
         self.data_pipeline: Optional[DataPipeline] = None
@@ -137,6 +139,18 @@ class TrafficOptimizationPipeline:
             except Exception as e:
                 log_module_status("RL", "error", str(e))
     
+    def _load_nlp(self):
+        """Lazy load NLP module."""
+        if self._nlp_wrapper is None and self.options.enable_nlp:
+            try:
+                from .wrappers import NLPWrapper
+                self._nlp_wrapper = NLPWrapper(
+                    device=self.config.models.nlp_device
+                )
+                log_module_status("NLP", "loaded")
+            except Exception as e:
+                log_module_status("NLP", "error", str(e))
+    
     def load_all_modules(self):
         """Pre-load all enabled modules."""
         self.logger.start("Loading modules")
@@ -151,6 +165,8 @@ class TrafficOptimizationPipeline:
             self._load_gan()
         if self.options.enable_rl:
             self._load_rl()
+        if self.options.enable_nlp:
+            self._load_nlp()
         
         self.logger.end("Loading modules")
     
@@ -313,6 +329,30 @@ class TrafficOptimizationPipeline:
             pedestrian_count=pedestrian_count or 0
         )
     
+    def run_nlp_analysis(self, text: str = None, texts: list = None):
+        """
+        Run NLP analysis on social media text.
+        
+        Args:
+            text: Single text to analyze.
+            texts: List of texts to analyze in batch.
+            
+        Returns:
+            NLPAnalysisResult or list of results.
+        """
+        self._load_nlp()
+        
+        if self._nlp_wrapper is None:
+            self.logger.warning("NLP module not available")
+            return None
+        
+        if texts is not None:
+            return self._nlp_wrapper.analyze_batch(texts)
+        elif text is not None:
+            return self._nlp_wrapper.analyze_text(text)
+        
+        return None
+    
     def run(self) -> PipelineResult:
         """
         Run the complete pipeline on loaded data.
@@ -443,6 +483,7 @@ class TrafficOptimizationPipeline:
                 'vae': self._vae_wrapper is not None and self._vae_wrapper.is_fitted,
                 'gan': self._gan_wrapper is not None,
                 'rl': self._rl_wrapper is not None,
+                'nlp': self._nlp_wrapper is not None,
             },
             'results_count': len(self._results)
         }

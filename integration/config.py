@@ -37,6 +37,10 @@ class ModulePaths:
         return self.base_dir / "module5_RL"
     
     @property
+    def nlp_dir(self) -> Path:
+        return self.base_dir / "module6_NLP"
+    
+    @property
     def outputs_dir(self) -> Path:
         return self.base_dir / "Outputs"
     
@@ -72,6 +76,11 @@ class ModelConfig:
         "Long Green (30s)",
         "Emergency Mode"
     )
+    
+    # NLP Module
+    nlp_sentiment_model: str = "distilbert-base-uncased-finetuned-sst-2-english"
+    nlp_ner_model: str = "dslim/bert-base-NER"
+    nlp_device: int = -1  # -1 for CPU, 0+ for GPU
 
 
 @dataclass
