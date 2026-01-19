@@ -66,24 +66,8 @@ This project implements an **end-to-end AI-driven traffic optimization system** 
 
 The system follows a modular architecture with five specialized deep learning modules connected through an integration layer:
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    Integration Layer (Pipeline)                  │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐    │
-│   │  Vision  │──▶│   LSTM   │──▶│   VAE    │──▶│    RL    │    │
-│   │ (YOLOv8) │   │ Forecast │   │ Anomaly  │   │ Q-Learn  │    │
-│   └──────────┘   └──────────┘   └──────────┘   └──────────┘    │
-│         │                             ▲                          │
-│         │                             │                          │
-│         │        ┌──────────┐         │                          │
-│         └───────▶│   GAN    │─────────┘                          │
-│                  │   Augment │                                   │
-│                  └──────────┘                                    │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
-```
+![System Architecture Overview](docs/system_architecture_overview.png)
+
 
 ### Data Flow
 
@@ -184,6 +168,8 @@ print(result.summary())
 ---
 
 ## 📦 Modules
+
+![Module Details](docs/module_details_diagram.png)
 
 ### Module 1: Vision (YOLOv8)
 
@@ -318,6 +304,8 @@ Natural Language Processing for analyzing traffic-related social media content.
 **Location**: `integration/`
 
 The integration layer provides a unified interface for orchestrating all modules.
+
+![Module Interdependence Matrix](docs/interdependence-matrix.png)
 
 ### Core Components
 
@@ -475,6 +463,8 @@ The Q-Learning agent demonstrates:
 
 ## 🔧 Requirements
 
+![Technology Stack](docs/technology_stack_diagram.png)
+
 ```txt
 ultralytics          # YOLOv8 for object detection
 torch               # PyTorch for deep learning
@@ -513,6 +503,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👥 Authors
 
 - **Talal Zahid** - [GitHub](https://github.com/Talalzahid868)
+- **Muhammad Umer** - [GitHub](https://github.com/umerkang66)
 
 ---
 
