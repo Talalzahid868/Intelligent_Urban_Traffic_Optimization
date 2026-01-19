@@ -1,0 +1,16 @@
+post_id,text,events,severity,sentiment_label,sentiment_score,locations,impact_score
+1,Major accident on Highway 101 near downtown exit. Traffic completely stopped! 🚗💥,"['accident', 'congestion']",high,NEGATIVE,0.9983,[],69.97
+2,Car crash on Main Street blocking two lanes. Expect delays of 30+ minutes.,"['accident', 'congestion']",high,NEGATIVE,0.9983,['Main Street'],79.97
+3,Overturned truck on I-95 southbound. Emergency services on scene.,"['weather', 'accident']",high,NEGATIVE,0.979,[],69.58
+4,Road construction on Oak Avenue starting Monday. Lane closures expected for 2 weeks.,['construction'],medium,NEGATIVE,0.9927,['Oak Avenue'],59.85
+5,Bridge repair work causing single lane traffic on River Road.,"['construction', 'congestion']",medium,NEGATIVE,0.977,['River Road'],64.54
+6,New traffic lights being installed at 5th and Broadway intersection.,['congestion'],low,POSITIVE,0.962,"['5th', 'Broadway']",25.0
+7,Big concert at City Arena tonight! Traffic around downtown will be crazy.,"['event', 'congestion']",medium,POSITIVE,0.999,['City Arena'],45.0
+8,Football game at the stadium - leave early to avoid the rush!,['event'],medium,NEGATIVE,0.9958,[],49.92
+9,Marathon running through city center tomorrow. Multiple road closures.,"['event', 'construction']",medium,NEGATIVE,0.9976,[],54.95
+10,Traffic flowing smoothly on the freeway this morning. Great commute!,['congestion'],low,POSITIVE,0.9997,[],15.0
+11,"Ugh, stuck in gridlock again on the 405. This city needs better transit.",['congestion'],low,NEGATIVE,0.9997,[],34.99
+12,Loving the new bike lanes - traffic seems lighter since they were added.,['congestion'],low,POSITIVE,0.9991,[],15.0
+13,Heavy rain causing slow traffic everywhere. Drive carefully!,"['weather', 'congestion']",medium,NEGATIVE,0.9878,[],54.76
+14,Fog advisory - visibility poor on coastal highways.,['weather'],medium,NEGATIVE,0.9997,[],49.99
+15,Ice on roads this morning. Several fender benders reported.,"['weather', 'accident']",high,NEGATIVE,0.9449,[],68.9

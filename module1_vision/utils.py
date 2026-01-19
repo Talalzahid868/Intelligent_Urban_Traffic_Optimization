@@ -6,6 +6,3 @@ def estimate_congestion(vehicle_count):
         return "Medium"
     else:
         return "High"
-
-
-
